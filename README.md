@@ -1,2 +1,2 @@
-# yt-solid
-SOLID Principles examples
+# SOLID Principles Made Easy
+

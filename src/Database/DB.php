@@ -2,16 +2,23 @@
 
 namespace Acme\Database;
 
-use JetBrains\PhpStorm\Pure;
-
 class DB
 {
-    #[Pure] public static function table(string $string): self
+    /**
+     * Sets the active table
+     * @param string $string
+     * @return static
+     */
+    public static function table(string $string): self
     {
         return new self();
     }
 
-    #[Pure] public function where(array $criteria): Collection
+    /**
+     * @param array $criteria
+     * @return Collection
+     */
+    public function where(array $criteria): Collection
     {
         return new Collection([
             [
@@ -24,5 +31,4 @@ class DB
             ]
         ]);
     }
-
 }

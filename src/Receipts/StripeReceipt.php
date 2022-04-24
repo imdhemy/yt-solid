@@ -2,9 +2,9 @@
 
 namespace Acme\Receipts;
 
-class AppStoreReceipt implements ReceiptInterface
+class StripeReceipt implements ReceiptInterface
 {
-    //
+
     public function isValid(): bool
     {
         // TODO: Implement isValid() method.

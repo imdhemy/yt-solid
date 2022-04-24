@@ -2,7 +2,7 @@
 
 namespace Acme\Receipts;
 
-class AppStoreReceipt implements ReceiptInterface
+class AppGalleryReceipt implements ReceiptInterface
 {
     //
     public function isValid(): bool

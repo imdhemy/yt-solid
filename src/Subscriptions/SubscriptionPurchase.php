@@ -5,8 +5,7 @@ namespace Acme\Subscriptions;
 use Acme\Entities\Subscription;
 use Acme\Entities\User;
 use Acme\Exceptions\InvalidReceiptException;
-use Acme\Receipts\AppStoreReceipt;
-use Acme\Receipts\GooglePlayReceipt;
+use Acme\Receipts\ReceiptInterface;
 use DateTime;
 
 class SubscriptionPurchase
@@ -24,16 +23,11 @@ class SubscriptionPurchase
     /**
      * @throws InvalidReceiptException
      */
-    public function subscribe($receipt)
+    public function subscribe(ReceiptInterface $receipt)
     {
-        if ($receipt instanceof AppStoreReceipt) {
-            $this->validateAppstore($receipt);
+        if ($receipt->isValid()) {
             $this->extendSubscription();
-        }
-
-        if ($receipt instanceof GooglePlayReceipt) {
-            $this->validateGooglePlay($receipt);
-            $this->extendSubscription();
+            return;
         }
 
         throw new InvalidReceiptException();
@@ -44,17 +38,5 @@ class SubscriptionPurchase
         $expiryDateTime = (new DateTime())->modify('+1 month');
         $this->subscription->setExpiryDateTime($expiryDateTime);
         $this->subscription->setUser($this->user);
-    }
-
-
-    private function validateAppstore(AppStoreReceipt $receipt)
-    {
-        //
-    }
-
-
-    private function validateGooglePlay(GooglePlayReceipt $receipt)
-    {
-        //
     }
 }

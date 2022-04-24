@@ -2,7 +2,11 @@
 
 namespace Acme\Receipts;
 
-class GooglePlayReceipt
+class GooglePlayReceipt implements ReceiptInterface
 {
     //
+    public function isValid(): bool
+    {
+        // TODO: Implement isValid() method.
+    }
 }

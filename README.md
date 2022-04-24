@@ -12,3 +12,7 @@ Classes should be open for extension, closed for modification.
 
 This means that every subclass or derived class should be substitutable for their base or parent class.
 
+## Interface Segregation
+
+Interfaces should not force classes to implement what they can't do. Large interfaces should be divided into small ones.
+

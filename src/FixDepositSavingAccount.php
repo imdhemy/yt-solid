@@ -2,7 +2,7 @@
 
 namespace Acme;
 
-class FixDepositSavingAccount implements SavingAccount
+class FixDepositSavingAccount implements Depositable
 {
     private int $milliBalance;
 
@@ -14,10 +14,5 @@ class FixDepositSavingAccount implements SavingAccount
     public function deposit(int $milliAmount): void
     {
         $this->milliBalance += $milliAmount;
-    }
-
-    public function withDraw(int $milliAmount): bool
-    {
-        throw new \Exception("Not supported by this account type");
     }
 }

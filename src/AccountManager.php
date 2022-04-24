@@ -4,12 +4,12 @@ namespace Acme;
 
 class AccountManager
 {
-    public function depositIntoAccount(SavingAccount $account, int $milliAmount): void
+    public function depositIntoAccount(Depositable $account, int $milliAmount): void
     {
         $account->deposit($milliAmount);
     }
 
-    public function withDrawFromAccount(SavingAccount $account, int $milliAmount): bool
+    public function withDrawFromAccount(Withdrawable $account, int $milliAmount): bool
     {
         return $account->withDraw($milliAmount);
     }

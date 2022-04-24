@@ -2,7 +2,7 @@
 
 namespace Acme;
 
-class SalarySavingAccount implements SavingAccount
+class SalarySavingAccount implements Depositable, Withdrawable
 {
     private int $milliBalance;
 

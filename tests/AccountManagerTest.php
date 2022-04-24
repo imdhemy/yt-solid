@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Acme\AccountManager;
-use Acme\FixDepositSavingAccount;
 use Acme\RegularSavingAccount;
 use Acme\SalarySavingAccount;
 use PHPUnit\Framework\TestCase;
@@ -20,8 +19,5 @@ class AccountManagerTest extends TestCase
         $accountManager->withDrawFromAccount(new RegularSavingAccount(100), 10);
 
         $accountManager->withDrawFromAccount(new SalarySavingAccount(100), 10);
-
-        // BREAK !!
-        $accountManager->withDrawFromAccount(new FixDepositSavingAccount(100), 10);
     }
 }

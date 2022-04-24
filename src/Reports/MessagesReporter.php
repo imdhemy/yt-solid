@@ -2,28 +2,26 @@
 
 namespace Acme\Reports;
 
-use Acme\Auth\Auth;
-use Acme\Database\DB;
-use Acme\Exceptions\AuthorizationException;
+use Acme\Repositories\MessageRepository;
 
 class MessagesReporter
 {
+    private MessageRepository $repository;
+
+    public function __construct(MessageRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param string $channel
+     * @param HtmlFormatter $formatter
      * @return string
-     * @throws AuthorizationException
      */
-    public function channel(string $channel): string
+    public function channel(string $channel, FormatterInterface $formatter): string
     {
-        // Check if user is authenticated
-        if (! Auth::check()) {
-            throw new AuthorizationException();
-        }
+        $messages = $this->repository->countByChannelId($channel);
 
-        // Find messages count in channel
-        $messages = DB::table('messages')->where(['channel_id' => $channel])->count();
-
-        // Return formatted results
-        return "<strong>Total: $messages</strong>";
+        return $formatter->print($messages);
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Acme\Reports;
 
-use Acme\Repositories\MessageRepository;
+use Acme\Repositories\MessageRepositoryInterface;
 
 class MessagesReporter
 {
-    private MessageRepository $repository;
+    private MessageRepositoryInterface $repository;
 
-    public function __construct(MessageRepository $repository)
+    public function __construct(MessageRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
